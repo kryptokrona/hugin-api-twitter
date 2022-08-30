@@ -42,13 +42,13 @@ def daemon():
     schedule.every().tuesday.at("12:00").do(get_top_hashtag())
     
 def get_total_posts():
-    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}]/api/v1/posts')
+    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/posts')
     data = json.loads(r.json())
     
     create_tweet(f'Currently rocking {total_messages} messages stored in Official Hugin Cache 🔥')
 
 def get_top_hashtag():
-    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}]/api/v1/hashtags')
+    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/hashtags')
     data = json.loads(r.json())
     
     create_tweet(f'Top hashtag {top_hashtag} used ⚡')
