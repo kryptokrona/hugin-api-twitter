@@ -25,6 +25,7 @@ To setup this project locally to test:
 - cd hugin-cache-twitter
 - virtualenv -p python3 .
 - source bin/activate
+- pip3 install -r requirements.txt
 
 # Contributors
 
