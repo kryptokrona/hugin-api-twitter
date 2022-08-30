@@ -29,7 +29,6 @@ def main():
     try:
         api.verify_credentials()
         print("Authentication OK")
-        create_tweet("Test tweet from Tweepy Python")
         daemon()
     except Exception as e:
         print("Error during authentication", str(e))
@@ -41,17 +40,19 @@ def daemon():
     schedule.every().monday.at("12:00").do(total_posts())
     schedule.every().tuesday.at("12:00").do(get_top_hashtag())
     
-def get_total_posts():
+def get_total_board_messages():
     r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/posts')
-    data = json.loads(r.json())
+    data = r.json()
+    total_messages = data['totalItems']
     
     create_tweet(f'Currently rocking {total_messages} messages stored in Official Hugin Cache 🔥')
 
-def get_top_hashtag():
+def get_total_hashtags():
     r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/hashtags')
-    data = json.loads(r.json())
+    data = r.json()
+    total_hashtags = data['totalItems']
     
-    create_tweet(f'Top hashtag {top_hashtag} used ⚡')
+    create_tweet(f'{total_hashtags} on Hugin Cache! ⚡')
 
 if __name__ == '__main__':
     main()
