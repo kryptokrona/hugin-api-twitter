@@ -37,10 +37,12 @@ def create_tweet(message):
     api.update_status(message)
 
 def daemon():
-    schedule.every().monday.at("12:00").do(total_posts())
-    schedule.every().tuesday.at("12:00").do(get_top_hashtag())
+    # Sets scheduling for when to execute the creation tweets
+    schedule.every().monday.at("12:00").do(get_total_board_messages())
+    schedule.every().tuesday.at("12:00").do(get_total_hashtags())
     
 def get_total_board_messages():
+    # API call to Hugin Cache to obtain total amount of board messages
     r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/posts')
     data = r.json()
     total_messages = data['totalItems']
@@ -48,11 +50,12 @@ def get_total_board_messages():
     create_tweet(f'Currently rocking {total_messages} messages stored in Official Hugin Cache 🔥')
 
 def get_total_hashtags():
+    # API call to Hugin Cache to obtain total amount of hashtags
     r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/hashtags')
     data = r.json()
     total_hashtags = data['totalItems']
     
-    create_tweet(f'{total_hashtags} on Hugin Cache! ⚡')
+    create_tweet(f'{total_hashtags} on Official Hugin Cache! ⚡')
 
 if __name__ == '__main__':
     main()
