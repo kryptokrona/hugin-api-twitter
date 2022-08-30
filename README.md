@@ -1,2 +1,1 @@
-# hugin-cache-twitter
-Twitter Bot for Hugin Cache
+# Twitter Bot for Hugin Cache
