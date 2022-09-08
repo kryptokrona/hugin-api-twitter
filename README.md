@@ -1,6 +1,6 @@
-# Twitter Bot for Hugin Cache
+# Twitter Bot for Hugin API
 
-A simple Twitter Bot for Hugin Cache to present data on https://twitter.com/hugincache
+A simple Twitter Bot for Hugin API to present data on https://twitter.com/huginapi
 
 # Table of Contents
 
@@ -21,7 +21,7 @@ A simple Twitter Bot for Hugin Cache to present data on https://twitter.com/hugi
 
 To setup this project locally to test:
 
-- git clone git@github.com:kryptokrona/hugin-cache-twitter.git (or use HTTPS)
+- git clone git@github.com:kryptokrona/hugin-api-twitter.git (or use HTTPS)
 - cd hugin-cache-twitter
 - virtualenv -p python3 .
 - source bin/activate

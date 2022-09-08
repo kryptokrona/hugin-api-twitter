@@ -1,4 +1,4 @@
-# Hugin Cache Twitter Bot
+# Hugin API Twitter Bot
 #
 # Author: Marcus Cvjeticanin
 # Location: Växjö, Sweden
@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-HUGIN_CACHE_DOMAIN = 'cache.hugin.chat'
+HUGIN_API_DOMAIN = 'api.hugin.chat'
 
 def main():
     # Authenticate to Twitter
@@ -43,7 +43,7 @@ def daemon():
     
 def get_total_board_messages():
     # API call to Hugin Cache to obtain total amount of board messages
-    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/posts')
+    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v1/posts')
     data = r.json()
     total_messages = data['totalItems']
     
@@ -51,11 +51,11 @@ def get_total_board_messages():
 
 def get_total_hashtags():
     # API call to Hugin Cache to obtain total amount of hashtags
-    r = requests.get(f'https://{HUGIN_CACHE_DOMAIN}/api/v1/hashtags')
+    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v1/hashtags')
     data = r.json()
     total_hashtags = data['totalItems']
     
-    create_tweet(f'{total_hashtags} on Official Hugin Cache! ⚡')
+    create_tweet(f'{total_hashtags} on Official Hugin API! ⚡')
 
 if __name__ == '__main__':
     main()
