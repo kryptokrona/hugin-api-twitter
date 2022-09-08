@@ -42,16 +42,16 @@ def daemon():
     schedule.every().tuesday.at("12:00").do(get_total_hashtags())
     
 def get_total_board_messages():
-    # API call to Hugin Cache to obtain total amount of board messages
-    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v1/posts')
+    # API call to Hugin API to obtain total amount of board messages
+    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v2/posts')
     data = r.json()
     total_messages = data['totalItems']
     
-    create_tweet(f'Currently rocking {total_messages} messages stored in Official Hugin Cache 🔥')
+    create_tweet(f'Currently rocking {total_messages} messages stored in Official Hugin API 🔥')
 
 def get_total_hashtags():
-    # API call to Hugin Cache to obtain total amount of hashtags
-    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v1/hashtags')
+    # API call to Hugin API to obtain total amount of hashtags
+    r = requests.get(f'https://{HUGIN_API_DOMAIN}/api/v2/hashtags')
     data = r.json()
     total_hashtags = data['totalItems']
     
