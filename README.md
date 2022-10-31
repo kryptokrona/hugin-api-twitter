@@ -23,7 +23,7 @@ To setup this project locally to test:
 
 - git clone git@github.com:kryptokrona/hugin-api-twitter.git (or use HTTPS)
 - cd hugin-cache-twitter
-- create a .env file with the following variables: ```APPKEY, APPSECRET, ACCESSTOKEN, ACCESSSECRET
+- create a .env file with the following variables: ```APPKEY, APPSECRET, ACCESSTOKEN, ACCESSSECRET ```
 - npm i 
 - node main.js
 
