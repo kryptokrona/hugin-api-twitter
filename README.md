@@ -1,13 +1,13 @@
 # Twitter Bot for Hugin API
 
-A simple Twitter Bot for Hugin API to present data on https://twitter.com/huginapi ´
+A simple Twitter Bot for Hugin API to present data on https://twitter.com/huginapi 
 
 # Table of Contents
 
 - [Development Resources](#development-resources)
 - [Contributors](#contributors)
 - [License](#license)
-g
+
 # Development Resources
 
 - Web: https://kryptokrona.org
