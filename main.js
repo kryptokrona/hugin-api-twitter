@@ -35,9 +35,35 @@ async function getStats() {
         .then((response) => {
             return response.json()
         }).then(async (json) => {
+<<<<<<< Updated upstream
             let encryptedAmount = json.total_items
             encryptedMessage = 'We also currently have ' + encryptedAmount + ' encrypted messages in the database'
             let response = await sendReplytoTwitter(encryptedMessage, id)
+=======
+            let postAmount = json.total_items
+            postMessage = '*Currently rocking ' + postAmount + ' messages stored in Official Hugin API 🔥 #kryptokrona'
+            let response = await sendToTwitter(postMessage)
+            let id = response.data.id
+
+            await fetch('https://api.hugin.chat/api/v1/posts-encrypted')
+                .then((response) => {
+                    return response.json()
+                }).then(async (json) => {
+                    let encryptedAmount = json.total_items
+                    encryptedMessage = 'We also currently have ' + encryptedAmount + ' encrypted messages in the database'
+                    let response = await sendReplytoTwitter(encryptedMessage, id)
+                })
+
+            await fetch('https://api.hugin.chat/api/v1/statistics/boards/popular')
+                .then((response) => { 
+                    return response.json()
+                }).then(async (json) => {
+                    let popularBoard = await json.statistics[0].board
+                    let boardPosts = await json.statistics[0].posts
+                    boardMessage = 'The most popular board at the moment is "' + popularBoard + '" with a total of ' + boardPosts + ' posts!'
+                    sendReplytoTwitter(boardMessage, id)
+                })
+>>>>>>> Stashed changes
         })
     })
 }
