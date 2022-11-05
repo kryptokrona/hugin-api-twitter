@@ -54,7 +54,7 @@ async function getPopularBoards() {
         }).then(async (json) => {
             let popularBoard = await json.statistics[0].board
             let boardPosts = await json.statistics[0].posts
-            boardMessage = 'The most popular board at the moment is "' + popularBoard + '" with a total of ' + boardPosts + ' posts!'
+            boardMessage = 'The most popular board at the moment is #' + popularBoard + ' with a total of ' + boardPosts + ' posts!'
             sendReplytoTwitter(boardMessage, id)
         })
 }
