@@ -22,35 +22,45 @@ async function sendReplytoTwitter(message, id) {
     return await client.v2.reply(message, id)
 }
 
-async function getStats() {
+async function getPosts() {
     await fetch('https://api.hugin.chat/api/v1/posts')
         .then((response) => {
             return response.json()
         }).then(async (json) => {
             let postAmount = json.total_items
-            postMessage = '*TESTING!!* Currently rocking ' + postAmount + ' messages stored in Official Hugin API 🔥 #kryptokrona'
+            postMessage = 'Currently rocking ' + postAmount + ' messages stored in Official Hugin API 🔥 #kryptokrona'
             let response = await sendToTwitter(postMessage)
-            let id = response.data.id
-
-            await fetch('https://api.hugin.chat/api/v1/posts-encrypted')
-                .then((response) => {
-                    return response.json()
-                }).then(async (json) => {
-                    let encryptedAmount = json.total_items
-                    encryptedMessage = 'We also currently have ' + encryptedAmount + ' encrypted messages in the database'
-                    let response = await sendReplytoTwitter(encryptedMessage, id)
-                })
-
-            await fetch('https://api.hugin.chat/api/v1/statistics/boards/popular')
-                .then((response) => { 
-                    return response.json()
-                }).then(async (json) => {
-                    let popularBoard = await json.statistics[0].board
-                    let boardPosts = await json.statistics[0].posts
-                    boardMessage = 'The most popular board at the moment is "' + popularBoard + '" with a total of ' + boardPosts + ' posts!'
-                    sendReplytoTwitter(boardMessage, id)
-                })
+            id = response.data.id
+            await getEncryptedPosts()
+            await getPopularBoards()
         })
+}
+
+async function getEncryptedPosts() {
+    await fetch('https://api.hugin.chat/api/v1/posts-encrypted')
+        .then((response) => {
+            return response.json()
+        }).then(async (json) => {
+            let encryptedAmount = json.total_items
+            encryptedMessage = 'We also currently have ' + encryptedAmount + ' encrypted messages in the database'
+            let response = await sendReplytoTwitter(encryptedMessage, id)
+        })
+}
+
+async function getPopularBoards() {
+    await fetch('https://api.hugin.chat/api/v1/statistics/boards/popular')
+        .then((response) => {
+            return response.json()
+        }).then(async (json) => {
+            let popularBoard = await json.statistics[0].board
+            let boardPosts = await json.statistics[0].posts
+            boardMessage = 'The most popular board at the moment is "' + popularBoard + '" with a total of ' + boardPosts + ' posts!'
+            sendReplytoTwitter(boardMessage, id)
+        })
+}
+
+async function getStats() {
+    getPosts()
 }
 
 cron.schedule("0 12 * * *", function () {
