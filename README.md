@@ -20,7 +20,7 @@ A simple Twitter Bot for Hugin API to present data on https://twitter.com/hugina
 
 To setup this project locally to test:
 
-- git clone git@github.com:kryptokrona/hugin-api-twitter.git (or use HTTPS)
+- `git clone git@github.com:kryptokrona/hugin-api-twitter.git` (or use HTTPS)
 - cd hugin-api-twitter
 - create a .env file with the following variables: ```APPKEY, APPSECRET, ACCESSTOKEN, ACCESSSECRET ```
 - npm i 
@@ -33,7 +33,7 @@ code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
 [<img src="https://avatars.githubusercontent.com/u/84473858?v=4" alt="Coffeboi" width="72">](https://github.com/Coffeboi)
-[<img src="https://github.com/c1phx.png?size=72" alt="c1phx" width="72">](https://github.com/c1phx)
+[<img src="https://github.com/mjovanc.png?size=72" alt="mjovanc" width="72">](https://github.com/mjovanc)
 [<img src="https://github.com/TechyGuy17.png?size=72" alt="TechyGuy17" width="72">](https://github.com/TechyGuy17)
 
 # License
