@@ -23,7 +23,7 @@ async function sendReplytoTwitter(message, id) {
 }
 
 async function getPosts() {
-    await fetch('https://api.hugin.chat/api/v1/posts')
+    await fetch('https://n1.vxo.nu/api/v1/posts')
         .then((response) => {
             return response.json()
         }).then(async (json) => {
@@ -37,7 +37,7 @@ async function getPosts() {
 }
 
 async function getEncryptedPosts() {
-    await fetch('https://api.hugin.chat/api/v1/posts-encrypted')
+    await fetch('https://n1.vxo.nu/api/v1/posts-encrypted')
         .then((response) => {
             return response.json()
         }).then(async (json) => {
@@ -48,7 +48,7 @@ async function getEncryptedPosts() {
 }
 
 async function getPopularBoards() {
-    await fetch('https://api.hugin.chat/api/v1/statistics/boards/popular')
+    await fetch('https://n1.vxo.nu/api/v1/statistics/boards/popular')
         .then((response) => {
             return response.json()
         }).then(async (json) => {
